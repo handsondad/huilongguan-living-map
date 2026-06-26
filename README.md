@@ -2,6 +2,16 @@
 
 > 一个从孩子视角出发，重新认识回龙观附近生活与物理世界的可视化项目。
 
+## 网站预览
+
+仓库包含一个轻量静态首页，可直接打开 `index.html` 预览，也可用于 GitHub Pages。
+
+```bash
+python3 -m http.server 8000
+```
+
+然后访问 <http://localhost:8000>。
+
 ## 项目简介
 
 **Huilongguan Living Map** 是一个关于北京回龙观地区的生活观察与可视化项目。
