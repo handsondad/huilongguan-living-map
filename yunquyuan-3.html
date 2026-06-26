@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>云趣园三区｜回龙观生活地图</title>
+    <meta
+      name="description"
+      content="一篇面向回龙观生活地图的云趣园三区独立介绍：位置、交通、配套、环境与居住体验。"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151515;
+        --muted: #686156;
+        --paper: #fff8ea;
+        --paper-strong: #fffdf5;
+        --line: #151515;
+        --green: #c8ff45;
+        --orange: #ff9b54;
+        --blue: #89d8ff;
+        --pink: #ff7ab6;
+        --lavender: #cbb8ff;
+        --shadow: 0 16px 0 #151515;
+        --soft-shadow: 0 24px 55px rgba(21, 21, 21, 0.13);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 8% 8%, rgba(200, 255, 69, 0.36), transparent 24rem),
+          radial-gradient(circle at 88% 10%, rgba(137, 216, 255, 0.34), transparent 20rem),
+          linear-gradient(135deg, rgba(21, 21, 21, 0.045) 25%, transparent 25%) 0 0 / 36px 36px,
+          var(--paper);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 8ch;
+        margin-bottom: 1.25rem;
+        font-size: clamp(4rem, 15vw, 10.5rem);
+        line-height: 0.82;
+        letter-spacing: -0.11em;
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: clamp(2.1rem, 6vw, 5rem);
+        line-height: 0.92;
+        letter-spacing: -0.07em;
+      }
+
+      h3 {
+        margin-bottom: 0.65rem;
+        font-size: 1.25rem;
+        line-height: 1.15;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: min(1120px, calc(100% - 2rem));
+        margin: 1rem auto 0;
+        padding: 0.75rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 253, 245, 0.88);
+        box-shadow: 0 10px 24px rgba(21, 21, 21, 0.1);
+        backdrop-filter: blur(18px);
+      }
+
+      .brand,
+      .site-nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .brand {
+        gap: 0.55rem;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 2.35rem;
+        height: 2.35rem;
+        place-items: center;
+        border: 2px solid var(--line);
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 3px 3px 0 var(--line);
+      }
+
+      .site-nav {
+        gap: 0.25rem;
+      }
+
+      .site-nav a,
+      .button {
+        border-radius: 999px;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .site-nav a {
+        padding: 0.65rem 0.9rem;
+        color: var(--muted);
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus-visible {
+        color: var(--ink);
+        background: var(--green);
+      }
+
+      .section {
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 5.5rem 0;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+        align-items: center;
+        gap: 3rem;
+        min-height: calc(100vh - 6rem);
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.75rem;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper-strong);
+        box-shadow: 4px 4px 0 var(--line);
+        font-size: 0.78rem;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        max-width: 41rem;
+        font-size: clamp(1.08rem, 2vw, 1.38rem);
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2rem;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 3.1rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem 1.2rem;
+        border: 2px solid var(--line);
+        box-shadow: 5px 5px 0 var(--line);
+      }
+
+      .button-primary {
+        background: var(--green);
+      }
+
+      .button-secondary {
+        background: var(--paper-strong);
+      }
+
+      .hero-card,
+      .story-card,
+      .photo-card,
+      .media-frame,
+      .quote-card,
+      .fit-card,
+      .route-step {
+        border: 2px solid var(--line);
+        background: var(--paper-strong);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .hero-card {
+        position: relative;
+        min-height: 31rem;
+        overflow: hidden;
+        padding: 1.4rem;
+        border-radius: 2rem;
+        background:
+          linear-gradient(145deg, rgba(255, 122, 182, 0.86), rgba(255, 155, 84, 0.92)),
+          var(--orange);
+        box-shadow: var(--shadow);
+        transform: rotate(2deg);
+      }
+
+      .hero-card::after {
+        position: absolute;
+        right: 0.7rem;
+        bottom: -0.8rem;
+        color: rgba(21, 21, 21, 0.12);
+        content: "三";
+        font-size: 18rem;
+        font-weight: 950;
+        line-height: 0.8;
+      }
+
+      .hero-card svg {
+        position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .hero-stat {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.7rem;
+        margin-top: 1rem;
+      }
+
+      .hero-stat span {
+        padding: 0.75rem;
+        border: 2px solid var(--line);
+        border-radius: 1rem;
+        background: var(--paper-strong);
+        font-size: 0.9rem;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .section-heading {
+        max-width: 46rem;
+        margin-bottom: 2rem;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+        gap: 1rem;
+      }
+
+      .story-card {
+        padding: 1.35rem;
+        border-radius: 1.5rem;
+      }
+
+      .story-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 2.8rem;
+        letter-spacing: -0.08em;
+      }
+
+      .story-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .story-list article:nth-child(2) {
+        background: var(--green);
+      }
+
+      .story-list article:nth-child(3) {
+        background: var(--blue);
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .photo-card {
+        overflow: hidden;
+        border-radius: 1.5rem;
+      }
+
+      .photo-visual {
+        min-height: 16rem;
+        border-bottom: 2px solid var(--line);
+        background:
+          radial-gradient(circle at 25% 28%, rgba(255, 255, 255, 0.72), transparent 4rem),
+          linear-gradient(135deg, var(--green), var(--blue));
+      }
+
+      .photo-card:nth-child(2) .photo-visual {
+        background:
+          linear-gradient(90deg, rgba(21, 21, 21, 0.18) 12px, transparent 12px) 0 0 / 42px 100%,
+          linear-gradient(135deg, var(--orange), var(--pink));
+      }
+
+      .photo-card:nth-child(3) .photo-visual {
+        background:
+          radial-gradient(circle at 70% 30%, rgba(200, 255, 69, 0.9), transparent 5rem),
+          linear-gradient(160deg, var(--lavender), var(--paper-strong));
+      }
+
+      .photo-card figcaption {
+        padding: 1rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+        gap: 1rem;
+      }
+
+      .media-frame {
+        overflow: hidden;
+        border-radius: 1.5rem;
+      }
+
+      .media-frame iframe {
+        display: block;
+        width: 100%;
+        min-height: 24rem;
+        border: 0;
+      }
+
+      .map-caption,
+      .quote-card {
+        padding: 1.2rem;
+      }
+
+      .route-stack {
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .route-step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.8rem;
+        padding: 1rem;
+        border-radius: 1.3rem;
+      }
+
+      .route-step span {
+        display: grid;
+        width: 2.4rem;
+        height: 2.4rem;
+        place-items: center;
+        border: 2px solid var(--line);
+        border-radius: 50%;
+        background: var(--green);
+        font-weight: 950;
+      }
+
+      .quote-card {
+        margin-top: 1rem;
+        border-radius: 1.5rem;
+        background: var(--ink);
+      }
+
+      .quote-card p,
+      .quote-card cite {
+        color: var(--paper);
+      }
+
+      .quote-card p {
+        font-size: 1.35rem;
+        font-weight: 850;
+        line-height: 1.55;
+      }
+
+      .fit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .fit-card {
+        min-height: 15rem;
+        padding: 1.2rem;
+        border-radius: 1.5rem;
+      }
+
+      .fit-card:nth-child(2) {
+        background: var(--green);
+      }
+
+      .fit-card:nth-child(3) {
+        background: var(--orange);
+      }
+
+      .site-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto 1.5rem;
+        padding: 1.25rem;
+        border: 2px solid var(--line);
+        border-radius: 1.5rem;
+        background: var(--ink);
+      }
+
+      .site-footer p,
+      .site-footer a {
+        margin: 0;
+        color: var(--paper);
+        font-weight: 850;
+      }
+
+      @media (max-width: 860px) {
+        .site-header,
+        .site-nav,
+        .button-row,
+        .site-footer {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .site-header {
+          border-radius: 1.5rem;
+        }
+
+        .site-nav {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .site-nav a {
+          text-align: center;
+        }
+
+        .section {
+          padding: 4rem 0;
+        }
+
+        .hero,
+        .story-grid,
+        .media-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 4rem;
+        }
+
+        .hero-card {
+          min-height: auto;
+          transform: none;
+        }
+
+        .photo-grid,
+        .fit-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        h1 {
+          max-width: 7ch;
+        }
+
+        .site-nav,
+        .hero-stat {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="返回我家在回龙观首页">
+        <span class="brand-mark">观</span>
+        <span>我家在回龙观</span>
+      </a>
+      <nav class="site-nav" aria-label="云趣园三区页面导航">
+        <a href="#location">位置</a>
+        <a href="#life">配套</a>
+        <a href="#media">地图</a>
+        <a href="#fit">适合谁</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div>
+          <p class="eyebrow">Neighborhood Story / 回龙观西大街</p>
+          <h1>云趣园三区</h1>
+          <p class="lead">
+            它不是最新的小区，也不靠“网红”气质取胜。云趣园三区更像回龙观的一段日常切片：
+            早晨从楼下出发的人、傍晚绕进树荫的孩子、沿街买菜和等车的路线，都在这里交叠。
+          </p>
+          <div class="button-row" aria-label="页面快捷入口">
+            <a class="button button-primary" href="#walk">跟着一条生活路线看</a>
+            <a class="button button-secondary" href="index.html">回到生活地图首页</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="云趣园三区位置示意图">
+          <svg viewBox="0 0 520 420" role="img" aria-labelledby="hero-map-title hero-map-desc">
+            <title id="hero-map-title">云趣园三区周边示意</title>
+            <desc id="hero-map-desc">用抽象街区、道路和地点标签表现云趣园三区的生活半径。</desc>
+            <rect x="22" y="26" width="476" height="368" rx="34" fill="#fffdf5" stroke="#151515" stroke-width="4" />
+            <path d="M54 288 C150 238 224 250 318 186 C378 146 418 128 474 110" fill="none" stroke="#151515" stroke-width="18" stroke-linecap="round" />
+            <path d="M70 104 H450" fill="none" stroke="#ff9b54" stroke-width="14" stroke-linecap="round" />
+            <path d="M140 54 V360" fill="none" stroke="#89d8ff" stroke-width="12" stroke-linecap="round" />
+            <rect x="190" y="150" width="132" height="92" rx="18" fill="#c8ff45" stroke="#151515" stroke-width="4" />
+            <text x="256" y="204" text-anchor="middle" font-size="30" font-weight="900" fill="#151515">云趣园三区</text>
+            <circle cx="400" cy="110" r="34" fill="#ff7ab6" stroke="#151515" stroke-width="4" />
+            <text x="400" y="119" text-anchor="middle" font-size="22" font-weight="900">商</text>
+            <circle cx="138" cy="294" r="32" fill="#cbb8ff" stroke="#151515" stroke-width="4" />
+            <text x="138" y="302" text-anchor="middle" font-size="21" font-weight="900">园</text>
+            <circle cx="92" cy="104" r="30" fill="#fff8ea" stroke="#151515" stroke-width="4" />
+            <text x="92" y="112" text-anchor="middle" font-size="20" font-weight="900">车</text>
+          </svg>
+          <div class="hero-stat">
+            <span>成熟社区</span>
+            <span>生活配套密集</span>
+            <span>步行半径友好</span>
+          </div>
+        </aside>
+      </section>
+
+      <section id="location" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">01 / 先把它放回地图里</p>
+          <h2>它在回龙观西大街的生活流线上</h2>
+          <p>
+            云趣园三区位于回龙观西大街一带，靠近育知路、龙禧三街等社区道路。
+            对很多住户来说，理解这个小区不只看边界，而是看每天如何从楼门走向公交站、商店、学校和公园。
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card">
+            <strong>20</strong>
+            <h3>栋左右的多层住宅尺度</h3>
+            <p>
+              公开资料显示，小区以 1999—2000 年前后的多层板楼为主。楼不算高，
+              街区尺度更接近日常步行：楼下、拐角、出入口和沿街店铺会频繁进入生活视线。
+            </p>
+          </article>
+          <div class="story-list">
+            <article class="story-card">
+              <h3>位置关键词</h3>
+              <p>回龙观西大街、育知路、龙禧三街、回龙观公交总站，是认识它的几个方向锚点。</p>
+            </article>
+            <article class="story-card">
+              <h3>交通关键词</h3>
+              <p>地铁 13 号线、8 号线和多条公交线路共同构成通勤选择，适合把步行、骑行和公共交通组合起来。</p>
+            </article>
+            <article class="story-card">
+              <h3>生活关键词</h3>
+              <p>餐饮、超市、药店、银行、幼儿园与社区公园密集分布，成熟片区的便利性比新鲜感更突出。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="walk" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">02 / 从一次傍晚回家开始</p>
+          <h2>一条路线，就能看见小区的性格</h2>
+        </div>
+
+        <div class="photo-grid" aria-label="云趣园三区生活观察图文卡片">
+          <figure class="photo-card">
+            <div class="photo-visual" role="img" aria-label="树荫与多层住宅的抽象照片"></div>
+            <figcaption>
+              <strong>楼下的树荫</strong><br />
+              多层楼栋之间留下了可停留的缝隙。夏天真正有价值的不是直线距离，而是哪条路有树影。
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <div class="photo-visual" role="img" aria-label="小区出入口与车行流线的抽象照片"></div>
+            <figcaption>
+              <strong>出入口的节奏</strong><br />
+              早晚高峰要留意车行出入口和临停车辆；带孩子步行时，过街等待点比地图上的距离更重要。
+            </figcaption>
+          </figure>
+          <figure class="photo-card">
+            <div class="photo-visual" role="img" aria-label="沿街商业与社区灯光的抽象照片"></div>
+            <figcaption>
+              <strong>沿街的烟火气</strong><br />
+              买菜、取快递、吃顿便饭都可以被压缩进短路程里，成熟社区的便利常常藏在这些小动作中。
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="life" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">03 / 配套不是清单，是生活顺序</p>
+          <h2>交通、商业、学校和公园彼此挨得很近</h2>
+          <p>
+            如果把云趣园三区当作一个生活原点，周边配套可以按“出门先遇到什么”来理解：
+            门口道路解决通勤，沿街商业解决即时需求，学校和公园则决定周末与亲子时间的去处。
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card">
+            <h3>交通</h3>
+            <p>
+              周边公交站点密集，可接驳回龙观、育知路、文华路等轨道交通节点。
+              对上班族来说，它更适合“步行到公交 / 骑行到地铁 / 周末自驾”的混合出行。
+            </p>
+          </article>
+          <article class="story-card">
+            <h3>商业与日常服务</h3>
+            <p>
+              回龙观西大街沿线的餐饮、便利店、超市和社区服务点足够覆盖日常。
+              它的优势不是单个大型目的地，而是小需求可以被很快满足。
+            </p>
+          </article>
+          <article class="story-card">
+            <h3>学校与亲子空间</h3>
+            <p>
+              小区及周边分布有幼儿园、小学和社区活动空间。对有孩子的家庭，真正需要继续观察的是上学路线、
+              路口安全、接送高峰和雨雪天动线。
+            </p>
+          </article>
+          <article class="story-card">
+            <h3>公园与散步</h3>
+            <p>
+              回龙园、社区绿地和沿街小广场提供了饭后散步、老人活动和孩子消耗体力的地方。
+              这些空间不宏大，却构成了回龙观生活地图里最常被重复使用的节点。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="media" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">04 / 地图与声音感</p>
+          <h2>把“到达”变成可以看的页面节奏</h2>
+        </div>
+
+        <div class="media-grid">
+          <figure class="media-frame">
+            <iframe
+              title="云趣园三区周边 OpenStreetMap 嵌入地图"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=116.319%2C40.071%2C116.344%2C40.086&amp;layer=mapnik&amp;marker=40.0785%2C116.3315"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <figcaption class="map-caption">
+              地图用于帮助读者建立方向感；实际出入口、步行路线和道路状态仍建议以现场观察为准。
+            </figcaption>
+          </figure>
+
+          <div>
+            <div class="route-stack" aria-label="生活路线观察">
+              <article class="route-step">
+                <span>1</span>
+                <div>
+                  <h3>从楼门到小区口</h3>
+                  <p>先经过楼间绿化和停车区域，观察孩子是否需要绕开车流。</p>
+                </div>
+              </article>
+              <article class="route-step">
+                <span>2</span>
+                <div>
+                  <h3>从小区口到沿街店铺</h3>
+                  <p>便利店、餐饮和快递点决定了晚饭前后最常发生的短距离移动。</p>
+                </div>
+              </article>
+              <article class="route-step">
+                <span>3</span>
+                <div>
+                  <h3>从主路转向公园</h3>
+                  <p>当车流声变弱、树荫变密，路线从通勤切换成散步。</p>
+                </div>
+              </article>
+            </div>
+
+            <aside class="quote-card">
+              <p>“成熟社区的好，不是第一眼惊艳，而是你连续住上几周后，发现很多事都不用特意安排。”</p>
+              <cite>— 回龙观生活地图观察笔记</cite>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="fit" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">05 / 适合谁关注</p>
+          <h2>它更适合重视便利和真实生活密度的人</h2>
+        </div>
+
+        <div class="fit-grid">
+          <article class="fit-card">
+            <h3>适合家庭型居住者</h3>
+            <p>看重学校、买菜、散步和老人孩子日常活动半径的人，会更容易理解它的成熟配套价值。</p>
+          </article>
+          <article class="fit-card">
+            <h3>适合公共交通通勤者</h3>
+            <p>如果能接受步行、骑行和公交接驳地铁的组合方式，云趣园三区的位置会比较顺手。</p>
+          </article>
+          <article class="fit-card">
+            <h3>需要继续权衡的人</h3>
+            <p>在意楼龄、电梯、停车、临街噪声或高峰拥堵的人，建议把早晚两个时段都走一遍再判断。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>云趣园三区：一处把日常生活压缩得很近的回龙观社区。</p>
+      <a href="#top">回到顶部</a>
+    </footer>
+  </body>
+</html>
