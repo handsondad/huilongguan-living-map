@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我家在回龙观｜回龙观生活地图</title>
+    <meta
+      name="description"
+      content="从孩子的高度重新认识回龙观：生活半径、上学路线、树荫、声音和好奇地点的可视化入口。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="我家在回龙观首页">
+        <span class="brand-mark">观</span>
+        <span>我家在回龙观</span>
+      </a>
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="#map">生活地图</a>
+        <a href="#themes">观察主题</a>
+        <a href="#design">改版方案</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Huilongguan Living Map</p>
+          <h1>从孩子的高度，重新认识回龙观。</h1>
+          <p class="hero-text">
+            把每天看见、走过、听到、闻到和触摸到的附近世界，整理成一张更有温度的生活地图。
+          </p>
+          <div class="hero-actions" aria-label="页面快捷入口">
+            <a class="button button-primary" href="#map">打开地图视角</a>
+            <a class="button button-secondary" href="#design">查看设计策略</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-label="项目核心数据概览">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <p class="card-kicker">1 公里生活圈</p>
+          <strong>7 个问题</strong>
+          <span>房子、入口、游乐场、危险路口、树荫、声音和秘密基地。</span>
+        </div>
+      </section>
+
+      <section id="map" class="section map-section" aria-labelledby="map-title">
+        <div class="section-heading">
+          <p class="eyebrow">核心页面 / Map</p>
+          <h2 id="map-title">清晰、可浏览的生活地图</h2>
+          <p>
+            用高对比标签、圆角信息卡和分层图例，让地图在移动端和桌面端都能快速理解。
+          </p>
+        </div>
+
+        <div class="map-layout">
+          <div class="map-card" aria-label="回龙观生活地图示意">
+            <div class="map-grid"></div>
+            <div class="route route-main"></div>
+            <div class="route route-park"></div>
+            <div class="pin pin-home">家</div>
+            <div class="pin pin-school">学</div>
+            <div class="pin pin-park">树</div>
+            <div class="pin pin-play">玩</div>
+            <div class="map-note">孩子真实走到的地方，比行政边界更重要。</div>
+          </div>
+
+          <aside class="insight-panel" aria-label="地图信息摘要">
+            <article>
+              <span class="tag tag-green">5 / 10 / 15 分钟</span>
+              <h3>生活半径</h3>
+              <p>用步行时间组织信息，优先展示孩子日常最容易到达的地方。</p>
+            </article>
+            <article>
+              <span class="tag tag-orange">需要牵手</span>
+              <h3>安全路口</h3>
+              <p>把红绿灯、停车出入口和噪声路段作为醒目的风险点。</p>
+            </article>
+            <article>
+              <span class="tag tag-blue">可以停下</span>
+              <h3>树荫与玩耍</h3>
+              <p>突出树荫、草地、广场和儿童游乐空间，保留本地生活气息。</p>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="themes" class="section themes-section" aria-labelledby="themes-title">
+        <div class="section-heading">
+          <p class="eyebrow">信息层级 / Themes</p>
+          <h2 id="themes-title">把观察主题做成可扫读卡片</h2>
+        </div>
+        <div class="theme-grid">
+          <article class="theme-card">
+            <span>01</span>
+            <h3>这里有多少房子？</h3>
+            <p>建筑密度、高楼低楼和天空边界，形成认识社区的第一层。</p>
+          </article>
+          <article class="theme-card">
+            <span>02</span>
+            <h3>孩子怎么移动？</h3>
+            <p>路线、路口、停留点和需要小心的地方，决定日常体验。</p>
+          </article>
+          <article class="theme-card">
+            <span>03</span>
+            <h3>哪里可以玩？</h3>
+            <p>公园、广场、小区角落和可探索空间，组成附近的快乐地图。</p>
+          </article>
+          <article class="theme-card">
+            <span>04</span>
+            <h3>回龙观听起来怎样？</h3>
+            <p>鸟叫、车流、地铁和人声，让地图不只停留在视觉层面。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="design" class="section design-section" aria-labelledby="design-title">
+        <div class="section-heading">
+          <p class="eyebrow">设计改版 / Refresh</p>
+          <h2 id="design-title">视觉问题与改版方案</h2>
+        </div>
+        <div class="design-grid">
+          <article class="design-card">
+            <h3>当前问题</h3>
+            <ul>
+              <li>仓库原本只有文字说明，缺少可访问的核心页面。</li>
+              <li>视觉层级、按钮、卡片、地图入口和移动端布局尚未建立。</li>
+              <li>本地生活内容丰富，但需要更统一的呈现系统承载。</li>
+            </ul>
+          </article>
+          <article class="design-card accent-card">
+            <h3>更新方向</h3>
+            <ul>
+              <li>参考 not-ship.com 的现代感：大标题、强对比、圆角卡片和趣味图形。</li>
+              <li>建立奶油底色、墨黑文字、荧光绿色和暖橙色的识别系统。</li>
+              <li>为按钮、标签和卡片补充 hover 动效、阴影、留白与响应式规则。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>附近不是背景，它就是我们的世界。</p>
+      <a href="#top">回到顶部</a>
+    </footer>
+  </body>
+</html>
