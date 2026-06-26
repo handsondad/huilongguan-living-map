@@ -353,11 +353,11 @@
         border-radius: 1.5rem;
       }
 
-      .media-frame iframe {
+      .media-frame svg {
         display: block;
         width: 100%;
         min-height: 24rem;
-        border: 0;
+        background: #f7efd9;
       }
 
       .map-caption,
@@ -676,15 +676,31 @@
 
         <div class="media-grid">
           <figure class="media-frame">
-            <iframe
-              title="云趣园三区周边 OpenStreetMap 嵌入地图"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=116.319%2C40.071%2C116.344%2C40.086&amp;layer=mapnik&amp;marker=40.0785%2C116.3315"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts"
-            ></iframe>
+            <svg viewBox="0 0 720 460" role="img" aria-labelledby="radius-map-title radius-map-desc">
+              <title id="radius-map-title">云趣园三区步行生活半径图</title>
+              <desc id="radius-map-desc">用内联示意地图展示小区、公交接驳、沿街商业、学校和公园之间的关系。</desc>
+              <rect width="720" height="460" fill="#f7efd9" />
+              <path d="M60 130 H660" stroke="#151515" stroke-width="22" stroke-linecap="round" opacity="0.9" />
+              <path d="M168 52 V410" stroke="#89d8ff" stroke-width="18" stroke-linecap="round" />
+              <path d="M94 342 C190 286 285 318 370 242 C452 168 518 176 640 112" fill="none" stroke="#ff9b54" stroke-width="18" stroke-linecap="round" />
+              <circle cx="360" cy="230" r="142" fill="rgba(200,255,69,0.28)" stroke="#151515" stroke-width="3" stroke-dasharray="10 10" />
+              <circle cx="360" cy="230" r="72" fill="rgba(255,122,182,0.22)" stroke="#151515" stroke-width="3" />
+              <rect x="278" y="182" width="164" height="96" rx="22" fill="#c8ff45" stroke="#151515" stroke-width="5" />
+              <text x="360" y="225" text-anchor="middle" font-size="30" font-weight="900" fill="#151515">云趣园三区</text>
+              <text x="360" y="258" text-anchor="middle" font-size="18" font-weight="800" fill="#151515">生活原点</text>
+              <g font-weight="900" fill="#151515" text-anchor="middle">
+                <circle cx="168" cy="130" r="38" fill="#fffdf5" stroke="#151515" stroke-width="5" />
+                <text x="168" y="139" font-size="22">公交</text>
+                <circle cx="560" cy="130" r="38" fill="#ff7ab6" stroke="#151515" stroke-width="5" />
+                <text x="560" y="139" font-size="22">商业</text>
+                <circle cx="220" cy="342" r="38" fill="#cbb8ff" stroke="#151515" stroke-width="5" />
+                <text x="220" y="351" font-size="22">学校</text>
+                <circle cx="548" cy="328" r="38" fill="#89d8ff" stroke="#151515" stroke-width="5" />
+                <text x="548" y="337" font-size="22">公园</text>
+              </g>
+            </svg>
             <figcaption class="map-caption">
-              地图用于帮助读者建立方向感；实际出入口、步行路线和道路状态仍建议以现场观察为准。
+              这张内联示意图用于帮助读者建立方向感；实际出入口、步行路线和道路状态仍建议以现场观察为准。
             </figcaption>
           </figure>
 
