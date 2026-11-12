@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
-import { ThemeCard } from '../components/ThemeCard';
-import { themes } from '../data/themes';
+import { LivingMap } from '../map/LivingMap';
+import { TOPICS } from '../topics/index';
 
-export function HomePage() {
-  return <>
-    <section className="hero section" aria-labelledby="hero-title"><div className="hero-copy"><p className="eyebrow"><span className="pulse-dot" /> 持续生长中的社区观察计划</p><h1 id="hero-title">附近，<br /><em>就是</em>我们的世界。</h1><p className="hero-text">从一条上学路、一次傍晚散步开始，把孩子每天走过、听到、触摸到的回龙观，慢慢画成一张有温度的地图。</p><div className="hero-actions"><Link className="button button-primary" to="/map">开始逛地图 ↓</Link><Link className="button button-secondary" to="/themes">选择观察主题 →</Link></div><div className="hero-meta"><span><b>01</b> 个起点</span><span><b>07</b> 个观察主题</span><span><b>∞</b> 次附近发现</span></div></div><div className="hero-map-card" aria-label="回龙观生活地图概览"><div className="card-topline"><span>HUILONGGUAN / 2026</span><span>01 — 生活半径</span></div><div className="hero-map-art" aria-hidden="true"><div className="hero-road road-horizontal" /><div className="hero-road road-vertical" /><div className="hero-route" /><span className="map-building building-a" /><span className="map-building building-b" /><span className="map-building building-c" /><span className="map-building building-d" /><span className="hero-tree tree-a">♣</span><span className="hero-tree tree-b">♣</span><span className="hero-tree tree-c">♣</span><div className="hero-home">家</div><div className="hero-school">学</div><span className="walk-label">步行 12 分钟</span></div><div className="hero-map-caption"><span className="caption-marker" /> 从家出发 1 公里的真实生活圈</div></div></section>
-    <section className="ticker" aria-label="项目关注内容"><div className="ticker-track"><span>孩子的高度</span><i>✳</i><span>树荫与风</span><i>✳</i><span>安全地过街</span><i>✳</i><span>可以停下的地方</span><i>✳</i><span>孩子的高度</span><i>✳</i></div></section>
-    <section className="section observation-section" aria-labelledby="observe-title"><div className="section-heading observation-heading"><p className="eyebrow">01 / WHAT WE NOTICE</p><h2 id="observe-title">把“附近”拆成<br />七个好奇的问题。</h2><p>每一个问题都是一副观察眼镜。它们不要求标准答案，只邀请我们认真看看每天经过的地方。</p></div><div className="theme-grid">{themes.map((theme) => <ThemeCard key={theme.id} theme={theme} />)}<Link className="theme-card story-link" to="/themes"><span className="theme-index">FIELD GUIDE</span><span className="story-arrow">↗</span><h3>打开主题档案</h3><p>每个主题都有问题、字段和内容位置。</p></Link></div></section>
-    <section className="section story-feature"><div className="story-number">01</div><div className="story-copy"><p className="eyebrow">NEIGHBORHOOD NOTE</p><h2>云趣园三区：<br />日常被压得很近。</h2><p>走过树荫，绕开车流，在沿街店铺买一袋水果。成熟社区的价值，常常藏在这些不用特意安排的小动作里。</p><Link className="text-link" to="/stories/yunquyuan-3">阅读这篇社区观察 →</Link></div><div className="story-visual" aria-hidden="true"><span className="story-sun" /><span className="story-block block-one" /><span className="story-block block-two" /><span className="story-block block-three" /><span className="story-path" /><span className="story-person">●</span></div></section>
-  </>;
+export function HomePage({ last, onOpen }: { last: string | null; onOpen: (topicId: string) => void }) {
+  return (
+    <div className="home">
+      <h1 className="sr-only">我家住在回龙观</h1>
+      <LivingMap topics={TOPICS} last={last} onOpen={onOpen} />
+    </div>
+  );
 }

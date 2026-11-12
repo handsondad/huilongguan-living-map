@@ -4,6 +4,9 @@ node_modules/
 # Production build output
 dist/
 
+# tools/osm.mjs 抓下来的原始数据（重新跑 npm run osm 就有）
+tools/.cache/
+
 # Local environment files
 .env
 .env.*

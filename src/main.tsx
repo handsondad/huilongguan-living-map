@@ -1,10 +1,12 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import 'lxgw-wenkai-screen-webfont/lxgwwenkaigbscreen.css';
 import { App } from './App';
-import '../styles.css';
-import '../archive.css';
+import { SNAP } from './render/env';
+import './index.css';
+
+if (SNAP) document.body.classList.add('snap');
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>,
+  <StrictMode><App /></StrictMode>,
 );

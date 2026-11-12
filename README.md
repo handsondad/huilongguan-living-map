@@ -1,4 +1,4 @@
-# 我家在回龙观 / Huilongguan Living Map
+# 我家住在回龙观 / Huilongguan Living Map
 
 > 一个从孩子视角出发，重新认识回龙观附近生活与物理世界的可视化项目。
 
@@ -348,7 +348,7 @@ npm run build
 
 ## 项目名称
 
-中文名：**我家在回龙观**
+中文名：**我家住在回龙观**
 
 英文名：**My Home in Huilongguan**
 
