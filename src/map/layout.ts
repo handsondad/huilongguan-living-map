@@ -106,12 +106,19 @@ const STREETS = GEO.areas.filter((a) => a.ours && a.label).map((a) => {
  */
 export function streetNameSpots(
   topics: readonly Topic[], k: number, s = 1,
-  /** 开场时屏幕左右能看到的地图范围（地图单位）；字尽量别写到屏幕外面去 */
-  seen?: readonly [number, number],
+  /** 开场时屏幕能看到的地图范围 [左, 上, 右, 下]（地图单位）；字尽量别写到屏幕外面去 */
+  seen?: readonly [number, number, number, number],
 ): Record<string, readonly [number, number]> {
   const kk = k / s;
   const { rects, rings } = place(topics, kk);
-  const boxes = [...rects, ...rings].map((r) => ({ cx: r.cx / kk, cy: r.cy / kk, w: (r.w + TAG_OVERHANG * 2) / kk, h: r.h / kk }));
+  const boxes: Rect[] = [
+    ...rects.map((r) => ({ cx: r.cx / kk, cy: r.cy / kk, w: (r.w + TAG_OVERHANG * 2) / kk, h: r.h / kk })),
+    ...rings.map((r) => ({ cx: r.cx / kk, cy: r.cy / kk, w: r.w / kk, h: r.h / kk })),
+    // 底图上写着的地铁站名、邻镇名和公园名也别盖住，不然会叠成半截怪词
+    ...GEO.stations.map((st) => ({ cx: st.x, cy: st.y - 12, w: st.name.length * 12 + 10, h: 22 })),
+    ...GEO.areas.filter((a) => !a.ours && a.label).map((a) => ({ cx: a.label![0], cy: a.label![1] - 8, w: a.name.length * 25 + 8, h: 28 })),
+    ...(k >= 1.3 ? GEO.parks.filter((p) => p.label).map((p) => ({ cx: p.label![0], cy: p.label![1] - 5, w: p.name.length * 14 + 8, h: 18 })) : []),
+  ];
   const out: Record<string, readonly [number, number]> = {};
   // 和 index.css 里一样：放大时字不跟着变大，屏幕上最大 44 像素
   const f = Math.min(1, 44 / 36 / k);
@@ -119,7 +126,13 @@ export function streetNameSpots(
     const box = ([x, y]: readonly [number, number]): Rect => ({ cx: x, cy: y - 13 * f, w: st.w * f, h: st.h * f });
     const covered = (a: Rect, b: Rect) =>
       Math.max(0, (a.w + b.w) / 2 - Math.abs(a.cx - b.cx)) * Math.max(0, (a.h + b.h) / 2 - Math.abs(a.cy - b.cy));
-    const away = (p: readonly [number, number]) => (seen ? Math.max(0, seen[0] - (p[0] - st.w * f / 2), p[0] + st.w * f / 2 - seen[1]) : 0);
+    const away = (p: readonly [number, number]) => {
+      if (!seen) return 0;
+      const b = box(p);
+      const ax = Math.max(0, seen[0] - (b.cx - b.w / 2), b.cx + b.w / 2 - seen[2]);
+      const ay = Math.max(0, seen[1] - (b.cy - b.h / 2), b.cy + b.h / 2 - seen[3]);
+      return ax + ay;
+    };
     const cost = (p: readonly [number, number]) =>
       boxes.reduce((sum, b) => sum + covered(b, box(p)), 0) + Math.hypot(p[0] - st.home[0], p[1] - st.home[1]) * 4 * f + away(p) * st.h * f * 4;
     const best = [st.home, ...st.spots].reduce((a, b) => (cost(b) < cost(a) ? b : a));

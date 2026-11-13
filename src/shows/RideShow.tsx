@@ -29,6 +29,26 @@ export function RideShow({ show }: { show: Extract<Show, { kind: 'ride' }> }) {
   const line = useMemo(() => polyline(GEO.cycleway.ride + TAIL), []);
   const closed = useMemo(() => polyline(GEO.cycleway.ride).total, []);
   const lenOf = (km: number) => (km / end) * line.total;
+  // 挨得太近的两个站（比如转大圈下桥和钻铁路桥）把圆钮轻轻错开一点，免得盖住点不到
+  const stopPins = useMemo(() => {
+    const pts = stops.map((s) => [...line.at((s.km / end) * line.total)] as [number, number]);
+    const minD = 26;
+    for (let iter = 0; iter < 12; iter++) {
+      for (let a = 0; a < pts.length; a++) {
+        for (let b = a + 1; b < pts.length; b++) {
+          const dx = pts[b][0] - pts[a][0], dy = pts[b][1] - pts[a][1];
+          const d = Math.hypot(dx, dy) || 0.01;
+          if (d < minD) {
+            const push = (minD - d) / 2;
+            const ux = dx / d, uy = dy / d;
+            pts[a][0] -= ux * push; pts[a][1] -= uy * push;
+            pts[b][0] += ux * push; pts[b][1] += uy * push;
+          }
+        }
+      }
+    }
+    return pts;
+  }, [stops, end, line]);
 
   const [km, setKm] = useState(SNAP ? end : 0);
   const [playing, setPlaying] = useState(false);
@@ -79,7 +99,7 @@ export function RideShow({ show }: { show: Extract<Show, { kind: 'ride' }> }) {
         </svg>
         {stops.map((s, i) => (
           <button key={s.name} type="button" className={`ride-stop ${s.km <= km + 0.005 ? 'passed' : ''} ${s === here ? 'here' : ''}`}
-            style={pct(line.at(lenOf(s.km)))} aria-label={`第 ${i + 1} 站：${s.name}`}
+            style={pct(stopPins[i])} aria-label={`第 ${i + 1} 站：${s.name}`}
             onClick={() => { setPlaying(false); setKm(s.km); }}>
             {i + 1}
           </button>

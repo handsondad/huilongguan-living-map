@@ -60,7 +60,7 @@ function Steps({ show }: { show: Of<'steps'> }) {
 
 function Numbers({ show }: { show: Of<'numbers'> }) {
   return (
-    <ul className="numbers" style={{ '--cols': cols(show.items.length) } as CSSProperties}>
+    <ul className="numbers" data-count={show.items.length} style={{ '--cols': cols(show.items.length) } as CSSProperties}>
       {show.items.map((it, i) => (
         <li key={it.label} style={{ '--i': i } as CSSProperties}>
           <strong>{it.value}<small>{it.unit}</small></strong>

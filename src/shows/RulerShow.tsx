@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { Cite } from '../render/Cite';
 import { REDUCED_MOTION, SNAP } from '../render/env';
 import type { Show } from '../topics/types';
@@ -11,8 +11,17 @@ export function RulerShow({ show }: { show: Extract<Show, { kind: 'ruler' }> }) 
   const { marks, unit, even } = show;
   const lo = marks[0].at;
   const hi = marks[marks.length - 1].at;
-  const pos = (k: number) => (even ? k / (marks.length - 1) : (marks[k].at - lo) / (hi - lo));
   const last = marks.length - 1;
+  // 按真实比例排时，离得太近的两格在窄屏上会叠住：给相邻两格留一点最小间距
+  const spots = useMemo(() => {
+    if (even) return marks.map((_, k) => k / Math.max(1, last));
+    const p = marks.map((mk) => (mk.at - lo) / (hi - lo));
+    const minGap = Math.min(0.125, 0.85 / Math.max(1, last));
+    for (let k = 1; k < last; k++) p[k] = Math.max(p[k], p[k - 1] + minGap);
+    for (let k = last - 1; k > 0; k--) p[k] = Math.min(p[k], p[k + 1] - minGap);
+    return p;
+  }, [marks, even, lo, hi, last]);
+  const pos = (k: number) => spots[k];
 
   const [i, setI] = useState(SNAP ? last : 0);
   const [playing, setPlaying] = useState(false);

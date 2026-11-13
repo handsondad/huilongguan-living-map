@@ -100,7 +100,7 @@ const topic: Topic = {
           cite: ['bjd-2024-photo'],
           show: {
             kind: 'numbers',
-            items: [{ value: '30—50', unit: '米', label: '鸟群的警戒线' }],
+            items: [{ value: '30～50', unit: '米', label: '鸟群的警戒线' }],
           },
         },
         {

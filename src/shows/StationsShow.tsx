@@ -26,7 +26,7 @@ export function StationsShow({ show }: { show: Extract<Show, { kind: 'stations' 
   return (
     <>
       <div className="ride-map" style={{ aspectRatio: `${w} / ${h}` }}>
-        <MapArt viewBox={`${x} ${y} ${w} ${h}`} moving={false} className="ride-art" />
+        <MapArt viewBox={`${x} ${y} ${w} ${h}`} moving={false} className="ride-art station-art" />
         {show.items.map((it, k) => {
           const s = at[k];
           return s && (

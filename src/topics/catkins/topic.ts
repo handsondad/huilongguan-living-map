@@ -46,7 +46,7 @@ const topic: Topic = {
             kind: 'numbers',
             items: [
               { value: '50', unit: '天', label: '大约飘这么久' },
-              { value: '10—16', unit: '点', label: '飘得最多' },
+              { value: '10～16', unit: '点', label: '飘得最多' },
             ],
           },
         },

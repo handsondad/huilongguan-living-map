@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, type CSSProperties, type KeyboardEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from 'react';
 import { REDUCED_MOTION, SNAP, useSaved } from '../render/env';
 import { CATEGORIES, categoryOf } from '../topics/categories';
 import type { CategoryId, Topic } from '../topics/types';
@@ -41,7 +41,15 @@ export function LivingMap({ topics, last, onOpen }: {
   // 记住的位置按地图尺寸分开存：地图重新生成、范围变了，旧的位置就对不上了
   const [saved, setSaved] = useSaved<View | null>(`map-view-${MAP_W}x${MAP_H}`, null);
   // 泡泡之间要留空，原大小时地图得放得很大才排得开；手机上再小一号，不然挤得只能叠在一起
-  const bs = typeof window !== 'undefined' && window.matchMedia?.('(max-width: 760px)').matches ? 0.65 : 0.85;
+  const [narrow, setNarrow] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.('(max-width: 760px)').matches);
+  useEffect(() => {
+    const mq = window.matchMedia?.('(max-width: 760px)');
+    if (!mq) return;
+    const onChange = () => setNarrow(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+  const bs = narrow ? 0.65 : 0.85;
   // 开场只管三个街道里的泡泡；离得远的（比如东小口森林公园）都算进来就缩得太小了，拖一拖再看
   const core = useMemo(() => topics.filter((t) => inFocus(t)), [topics]);
   const extent = useCallback((k: number) => bubbleBoxes(core, k, bs), [core, bs]);
@@ -74,7 +82,7 @@ export function LivingMap({ topics, last, onOpen }: {
 
   const shown = topics.filter((t) => t.home || !off.includes(t.category));
   const placed = layoutBubbles(shown, k, bs);
-  const seen = pz.opened ? [pz.opened[0] + 10, pz.opened[1] - 10] as const : undefined;
+  const seen = pz.opened ? [pz.opened[0] + 10, pz.opened[1] + 28, pz.opened[2] - 10, pz.opened[3] - 18] as const : undefined;
   const spots = streetNameSpots(shown, k, bs, seen);
   // 位置没变就还用原来那个对象，地图底图不用重画
   const spotKey = JSON.stringify(spots);
@@ -135,8 +143,8 @@ export function LivingMap({ topics, last, onOpen }: {
       <p className="map-hint" aria-hidden="true">👆 拖一拖地图，点一个泡泡</p>
 
       <p className="map-credit">
-        底图 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> 贡献者<span className="wide-only">（{GEO.fetchedAt}）。
-        路、地铁、公园和街道边界是真实的；</span>小楼和小树只是示意<span className="wide-only">，「我家」只画在大概的那一片</span>。
+        底图 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> 贡献者<span className="wide-only">（{GEO.fetchedAt}） ·
+        路、地铁、公园和街道边界是真实的</span> · 小楼和小树只是示意<span className="wide-only">，「我家」只画在大概的那一片</span>。
       </p>
     </section>
   );

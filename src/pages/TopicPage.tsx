@@ -17,7 +17,7 @@ export function TopicPage({ topic }: { topic: Topic }) {
       </nav>
 
       <header className="topic-hero">
-        <Locator anchor={topic.anchor} />
+        <Locator anchor={topic.anchor} home={topic.home} />
         <div className="topic-head">
           <p className="topic-cat"><span aria-hidden="true">{cat.icon}</span> {cat.name}</p>
           <h1><span className="topic-emoji" aria-hidden="true">{topic.emoji}</span>{topic.title}</h1>
@@ -39,8 +39,6 @@ export function TopicPage({ topic }: { topic: Topic }) {
         ))}
       </ol>
 
-      <Sources sources={topic.sources} map />
-
       <nav className="other-topics" aria-label="换一个泡泡">
         <h2>换一个泡泡</h2>
         <div className="other-chips">
@@ -54,6 +52,8 @@ export function TopicPage({ topic }: { topic: Topic }) {
           })}
         </div>
       </nav>
+
+      <Sources sources={topic.sources} map fold />
     </div>
   );
 }

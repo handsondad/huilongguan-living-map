@@ -68,7 +68,7 @@ export function MetroShow({ show }: { show: Extract<Show, { kind: 'metro' }> }) 
 
   return (
     <>
-      <svg className="metro" viewBox={`0 0 500 ${BOTTOM + 30}`} role="img" aria-label={show.with18 ? '13 号线和 18 号线示意图' : '13 号线示意图'}>
+      <svg className="metro" viewBox={`-16 0 524 ${BOTTOM + 30}`} role="img" aria-label={show.with18 ? '13 号线和 18 号线示意图' : '13 号线示意图'}>
         {show.with18 && (
           <g className="metro-18">
             <path d={PATH_18} stroke={C18} className="metro-under" />
@@ -89,7 +89,7 @@ export function MetroShow({ show }: { show: Extract<Show, { kind: 'metro' }> }) 
             <Label s={s} home={s.name === '回龙观'} />
           </g>
         ))}
-        <text x={(L + R) / 2} y={BOTTOM - 70} textAnchor="middle" className="metro-mid">13 号线</text>
+        <text x={(L + R) / 2} y={BOTTOM - 74} textAnchor="middle" className="metro-mid">13 号线</text>
         <text x={(L + R) / 2} y={BOTTOM - 50} textAnchor="middle" className="metro-mid small">像一个倒过来的 U</text>
         <g transform={`translate(${train[0]} ${train[1]})`} className="metro-train" aria-hidden="true">
           <circle r="13" fill={C13} stroke="#fff" strokeWidth="3" />
@@ -102,7 +102,9 @@ export function MetroShow({ show }: { show: Extract<Show, { kind: 'metro' }> }) 
       </div>
       <p className="tide-note">
         <span className="metro-key solid" style={{ background: C13 }} />地面和高架
-        <span className="metro-key dots" style={{ color: show.with18 ? C18 : C13 }} />在地下
+        {show.with18
+          ? <span className="metro-key dots" style={{ color: C18 }} />
+          : <span className="metro-key tunnel-13" style={{ background: C13 }} />}在地下
         · 示意图只画了站的先后，不是真的远近。
       </p>
     </>

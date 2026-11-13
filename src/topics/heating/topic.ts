@@ -115,7 +115,7 @@ const topic: Topic = {
             items: [
               { value: '18', unit: '℃', label: '至少这么暖' },
               { value: '25', unit: '℃', label: '别超过' },
-              { value: '2—3', unit: '次', label: '每天开窗通风' },
+              { value: '2～3', unit: '次', label: '每天开窗通风' },
             ],
           },
         },

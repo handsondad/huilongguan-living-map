@@ -63,6 +63,11 @@ export function TideShow() {
       <div className="tide-ends" aria-hidden="true"><span>← 往上地</span><span>往回龙观 →</span></div>
       <svg className="tide-road" viewBox={`0 0 ${W} 232`} role="img"
         aria-label={`${hhmm(hour)}，中间的红色车道往${west ? '上地' : '回龙观'}方向开`}>
+        <defs>
+          <clipPath id="tide-lanes">
+            <rect x={ROAD.x0} y={top - 28} width={ROAD.x1 - ROAD.x0} height={ROAD.h * 3 + 36} />
+          </clipPath>
+        </defs>
         <rect x={ROAD.x0 - 6} y={top - 8} width={ROAD.x1 - ROAD.x0 + 12} height={ROAD.h * 3 + 16} rx="16" fill="#e9dcc4" />
         <rect x={ROAD.x0} y={top} width={ROAD.x1 - ROAD.x0} height={ROAD.h} fill="#6bcb77" />
         <rect x={ROAD.x0} y={mid} width={ROAD.x1 - ROAD.x0} height={ROAD.h} fill="#ff6b6b" />
@@ -77,9 +82,11 @@ export function TideShow() {
             <Arrow x={x} y={bot + ROAD.h / 2} dir={1} />
           </g>
         ))}
-        {lane(wN, top, -1, t, 1)}
-        {lane(midN, mid, midDir, t, 3)}
-        {lane(eN, bot, 1, t, 5)}
+        <g clipPath="url(#tide-lanes)">
+          {lane(wN, top, -1, t, 1)}
+          {lane(midN, mid, midDir, t, 3)}
+          {lane(eN, bot, 1, t, 5)}
+        </g>
         <rect x="312" y={top - 22} width="16" height={ROAD.h * 3 + 44} rx="6" fill="#8c7b62" opacity="0.85" />
         <text x="320" y={top - 28} textAnchor="middle" className="tide-gantry-label">龙门架</text>
       </svg>

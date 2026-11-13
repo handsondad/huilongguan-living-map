@@ -1,13 +1,35 @@
-import type { CSSProperties, ReactNode } from 'react';
+import { useMemo, type CSSProperties, type ReactNode } from 'react';
 import { Avatar, CHARACTER_NAMES, type CharacterId } from '../render/Avatar';
 import { Cite, SourcesContext } from '../render/Cite';
 import { ShowView } from '../shows/ShowView';
 import { categoryOf } from '../topics/categories';
-import type { Article, Topic } from '../topics/types';
+import type { Article, Source, Topic, Turn } from '../topics/types';
 import { Sources } from './Sources';
 
 /** 用了 OSM 地图的图解，页尾要写地图数据的出处 */
 const MAP_SHOWS = new Set(['ride', 'streets', 'stations']);
+
+function turnCites(turn: Turn): readonly string[] {
+  const s = turn.show;
+  const inner = s?.kind === 'ride' ? s.stops : s?.kind === 'ruler' ? s.marks : s?.kind === 'streets' || s?.kind === 'stations' ? s.items : [];
+  return [...(turn.cite ?? []), ...inner.flatMap((x) => x.cite ?? [])];
+}
+
+/** 只挑这篇问答实际引到的资料，按正文里出现的先后编号 1, 2, 3… */
+function articleSources(topic: Topic, article: Article): readonly Source[] {
+  const byId = new Map(topic.sources.map((s) => [s.id, s]));
+  const seen = new Set<string>();
+  const out: Source[] = [];
+  for (const turn of article.dialogue ?? []) {
+    for (const id of turnCites(turn)) {
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const src = byId.get(id);
+      if (src) out.push(src);
+    }
+  }
+  return out;
+}
 
 function Line({ who, i, children }: { who: CharacterId; i: number; children: ReactNode }) {
   return (
@@ -29,6 +51,7 @@ export function ArticlePage({ topic, article }: { topic: Topic; article: Article
   const next = topic.articles[i + 1];
   const list = `#/topic/${topic.id}`;
   const more = topic.articles.filter((a) => a !== article);
+  const sources = useMemo(() => articleSources(topic, article), [topic, article]);
 
   return (
     <div className="app article" style={{ '--c': cat.color } as CSSProperties}>
@@ -47,7 +70,7 @@ export function ArticlePage({ topic, article }: { topic: Topic; article: Article
         <h1>{article.title}</h1>
       </header>
 
-      <SourcesContext.Provider value={topic.sources}>
+      <SourcesContext.Provider value={sources}>
         <main className="qa-main">
           <p className="qa-scene"><span aria-hidden="true">📍</span>{article.trigger}</p>
           {article.dialogue?.length ? (
@@ -93,7 +116,7 @@ export function ArticlePage({ topic, article }: { topic: Topic; article: Article
         </main>
       </SourcesContext.Provider>
 
-      <Sources sources={topic.sources} map={article.dialogue?.some((t) => t.show && MAP_SHOWS.has(t.show.kind))} />
+      <Sources sources={sources} map={article.dialogue?.some((t) => t.show && MAP_SHOWS.has(t.show.kind))} />
     </div>
   );
 }

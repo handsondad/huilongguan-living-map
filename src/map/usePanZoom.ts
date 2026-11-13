@@ -94,11 +94,11 @@ export function usePanZoom(
     return { k: fit, x: vw / 2 - ((focus[0] + focus[2]) / 2) * fit, y: vh / 2 - ((focus[1] + focus[3]) / 2) * fit };
   }, [fitK, focus, balloons, limits, middle]);
 
-  // 开场那一屏左右看得到地图的哪一段（地图单位）：街道名尽量写在这段里
-  const [opened, setOpened] = useState<readonly [number, number] | null>(null);
+  // 开场那一屏看得到地图的哪一块（地图单位）：街道名尽量写在这块里
+  const [opened, setOpened] = useState<Box | null>(null);
   const goHome = useCallback((): View => {
     const v = home();
-    setOpened([-v.x / v.k, (size.current.vw - v.x) / v.k]);
+    setOpened([-v.x / v.k, -v.y / v.k, (size.current.vw - v.x) / v.k, (size.current.vh - v.y) / v.k]);
     return v;
   }, [home]);
 
