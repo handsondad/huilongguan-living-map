@@ -12,7 +12,8 @@ export default defineConfig({
           const norm = id.replaceAll('\\', '/');
           if (norm.includes('/node_modules/')) return 'vendor';
           if (norm.endsWith('/src/map/geo.json')) return 'map-geo';
-          if (norm.includes('/src/topics/')) return 'topics';
+          const m = norm.match(/\/src\/topics\/([^/]+)\//);
+          if (m) return m[1] < 'm' ? 'topics-a' : 'topics-b';
         },
       },
     },

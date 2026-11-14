@@ -19,7 +19,7 @@ export function WhoShow({ show }: { show: Extract<Show, { kind: 'who' }> }) {
                 <strong>{it.name}</strong>
                 {shown
                   ? <span className="who-verdict"><b>{it.ok ? '✓ 可以' : '✗ 不行'}</b>{it.why}</span>
-                  : <span className="who-guess">能进吗？点一下</span>}
+                  : <span className="who-guess">可以吗？点一下</span>}
               </button>
             </li>
           );

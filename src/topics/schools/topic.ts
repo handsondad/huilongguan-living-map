@@ -190,8 +190,64 @@ const topic: Topic = {
       parentTip: '学校改名多，北京 12345 服务导图上还是旧名（比如「华北电力大学附属中学」就是今天的回龙观学校）。「始建于 1958 年」出自招生网站转载的简章。回天地区的学位总数各篇报道说法不一（第一轮三年就有 22530 个的说法），文中只用了 2025 年「7 年 2.2 万多个」这一条。人大附中昌平学校在霍营，清华附中昌平学校的清悦小学部在东小口，都不在回龙观的三个街道里。',
       shots: ['育新学校门口', '放学时的校门'],
     },
+    {
+      id: 'campus-sport',
+      title: '现在回龙观的学校里，课间和体育课都玩什么？',
+      trigger: '上午路过小学围墙外，听见下课铃一响，操场上立刻传出一阵阵欢呼和哨子声。',
+      dialogue: [
+        {
+          nian: '爸爸，下课铃刚响，哥哥姐姐怎么这么快就跑到操场上玩啦？',
+          dad: '因为现在下课时间变长啦！从 2024 年秋季学期起，北京把义务教育学校的课间从 10 分钟延长到了 15 分钟，叫「课间一刻钟」，上下午还各安排一次 30 分钟的大课间，小学生每天课间总时长不少于 90 分钟。',
+          cite: ['jw-recess-2024', 'bj-recess-2024'],
+          show: {
+            kind: 'bars',
+            unit: '分钟',
+            items: [
+              { icon: '⏱️', label: '原来的小课间', value: 10, text: '10 分钟' },
+              { icon: '🔔', label: '现在的课间一刻钟', value: 15, text: '15 分钟' },
+              { icon: '🏃', label: '上下午大课间', value: 30, text: '30 分钟' },
+            ],
+          },
+        },
+        {
+          nian: '大课间有半小时？要是老师拖堂不让出教室，课间一刻钟不就没了吗？',
+          dad: '市教委专门下了硬规矩：严禁拖堂和提前上课，坚决杜绝课间不让学生出教室！昌平区还鼓励学校利用走廊、墙面设置迷你运动区，让同学们走出教室就能活动筋骨、晒晒太阳。',
+          cite: ['jw-recess-2024', 'bjd-cp-tyj-2025'],
+        },
+        {
+          nian: '走廊边就有迷你运动区！那体育课和大课间一般玩什么项目呀？',
+          dad: '花样可多了！2025 年北京出台体育新规定，小学和初中每天都有 1 节体育课，杜绝「不出汗」的说教课；昌平区把足球纳入义务教育必修内容，大课间还推行跳绳、踢毽、拔河、飞盘等 10 个项目轮换着玩。',
+          cite: ['ty-2025', 'bjd-cp-tyj-2025'],
+        },
+        {
+          nian: '每天都能踢足球、玩跳绳？回龙观的学校里会有比赛吗？',
+          dad: '有超热闹的班级联赛，大家管它叫「班超」！昌平第二实验小学连续 12 年办班级联赛，一个学期就能比 156 场；回龙观中心小学 39 个班 1400 多名学生全员打篮球赛，育新学校打排球赛，旁边的学校还比跳绳呢。',
+          cite: ['bjd-cp-tyj-2025', 'bjd-cp-bc-2025'],
+          show: {
+            kind: 'list',
+            items: [
+              { icon: '⚽', text: '昌平第二实验小学：足球、篮球班级联赛' },
+              { icon: '🏀', text: '回龙观中心小学：39 个班全员篮球联赛' },
+              { icon: '🏐', text: '回龙观育新学校：男、女生组队排球联赛' },
+              { icon: '🪢', text: '大课间轮换：跳绳、踢毽、拔河、飞盘' },
+            ],
+          },
+        },
+        {
+          nian: '全班上场打班级联赛太燃了！到了冬天也能玩冰雪运动吗？',
+          dad: '当然能！回龙观中心小学、育翔小学回龙观学校和回龙观学校都是北京市「冰雪运动特色学校」。就算没铺真冰，大家也能在平地上玩「陆地冰壶」，推着带滑轮的冰壶比谁停得准，回龙观中心小学女队还拿过全市陆地冰壶比赛第 7 名呢。',
+          cite: ['bjd-ice-schools', 'bjd-cp-curling-2023', 'ty-2025'],
+        },
+        {
+          nian: '我懂了！现在学校有 15 分钟的「课间一刻钟」和每天 1 节体育课，不仅能踢足球、跳绳、打班级联赛，还能在特色学校里玩陆地冰壶！',
+          dad: '说得对！等你背上小书包上一年级，每天下课铃一响，也能跟小伙伴去操场上痛痛快快跑起来啦。',
+        },
+      ],
+      parentTip: '2024 年秋季学期起北京市义务教育学校全面推行「课间一刻钟」；2025 年 2 月市教委、市体育局印发中小学体育工作「八条措施」，要求小学每班每学期开展不少于 5 场班级联赛、初中不少于 4 场。除文中提到的三所冰雪运动特色校外，首都师范大学附属回龙观育新学校、第一六一中学回龙观学校、昌平第二实验小学还获评北京市奥林匹克教育示范学校。',
+      shots: ['下课热闹的小学操场', '校园围栏外的足球场或跑道'],
+    },
   ],
-  updated: '2026-11-13',
+  updated: '2026-11-14',
   sources: [
     { id: 'bjstb-2023', title: '2023年面向台胞子女招生的普惠性幼儿园名册——昌平区', url: 'https://www.bjstb.gov.cn/bjtb/zmhd/wwtbbss/1323464/index.html', by: '北京市人民政府台湾事务办公室' },
     { id: 'hlg-2006', title: '回龙观孩子入园有点难', url: 'https://news.hlgnet.com/info/1808/', by: '北京晚报（回龙观社区网转载）' },
@@ -199,7 +255,7 @@ const topic: Topic = {
     { id: 'hlg-2010-edu', title: '回龙观将引入新教育资源 积极运作引进西城名校', url: 'https://news.hlgnet.com/info/6004/', by: '回龙观社区网' },
     { id: 'bjrb-2018', title: '投195亿元优化提升回龙观天通苑', url: 'https://www.beijing.gov.cn/zhengce/zcjd/201905/t20190523_78677.html', by: '北京日报（首都之窗转载）' },
     { id: 'plan-2018', title: '北京市人民政府办公厅关于印发《优化提升回龙观天通苑地区公共服务和基础设施三年行动计划(2018—2020年)》的通知', url: 'https://www.beijing.gov.cn/zhengce/zfwj/zfwj2016/bgtwj/201905/t20190522_61457.html', by: '北京市人民政府办公厅' },
-    { id: 'bj-2021', title: '新一轮"回天计划"升级公共服务品质 持续补齐民生短板', url: 'https://www.beijing.gov.cn/ywdt/gzdt/202101/t20210113_2218152.html', by: '北京日报（首都之窗转载）' },
+    { id: 'bj-2021', title: '新一轮「回天计划」升级公共服务品质 持续补齐民生短板', url: 'https://www.beijing.gov.cn/ywdt/gzdt/202101/t20210113_2218152.html', by: '北京日报（首都之窗转载）' },
     { id: 'jyb-2019', title: '积极统筹区域资源 有效推动学前发展', url: 'http://www.jyb.cn/rmtzcg/xwy/wzxw/201904/t20190418_226270.html', by: '北京市昌平区教委（中国教育新闻网）' },
     { id: 'map-sy', title: '北京12345服务导图：华北电力大学附属小学', url: 'https://map.beijing.gov.cn/place?categoryId=xx&placeId=684a797df8f52a79c0ac77ab', by: '首都之窗（数据：北京市教委）' },
     { id: 'map-2sy', title: '北京12345服务导图：北京市昌平第二实验小学（东校区）', url: 'https://map.beijing.gov.cn/place?categoryId=xx&placeId=684a797df8f52a79c0ac77a7', by: '首都之窗（数据：北京市教委）' },
@@ -208,7 +264,7 @@ const topic: Topic = {
     { id: 'ysx-2017', title: '昌平区实验小学发展历程', url: 'https://www.ysxiao.cn/c/201708/13889.html', by: '北京幼升小网' },
     { id: 'ysx-2023', title: '2023年昌平区育新实验小学（原北京市昌平实验小学）招生简章', url: 'https://www.ysxiao.cn/c/202306/62250.html', by: '北京幼升小网' },
     { id: 'map-yx', title: '北京12345服务导图：北京育翔小学回龙观学校', url: 'https://map.beijing.gov.cn/place?categoryId=xx&placeId=684a797df8f52a79c0ac77af', by: '首都之窗（数据：北京市教委）' },
-    { id: 'bjd-2025-yx', title: '迎新启航，乘风破浪！有一种仪式感叫"我们开学啦"', url: 'https://peking.bjd.com.cn/content/s68bae673e4b02424b0bfce95.html', by: '北京日报客户端·北京号' },
+    { id: 'bjd-2025-yx', title: '迎新启航，乘风破浪！有一种仪式感叫「我们开学啦」', url: 'https://peking.bjd.com.cn/content/s68bae673e4b02424b0bfce95.html', by: '北京日报客户端·北京号' },
     { id: 'bjd-2025-new', title: '昌平区优质教育资源再扩容', url: 'https://peking.bjd.com.cn/content/s68cbda30e4b0221b9bed0c2b.html', by: '北京日报客户端·北京号' },
     { id: 'jw-2026', title: '北京市教育委员会关于2026年义务教育阶段入学工作的意见', url: 'https://jw.beijing.gov.cn/xxgk/2024zcwj/2024xzgfwj/202604/t20260417_4589095.html', by: '北京市教育委员会' },
     { id: 'law', title: '中华人民共和国义务教育法', url: 'https://www.gov.cn/guoqing/2021-10/29/content_5647617.htm', by: '中国政府网' },
@@ -223,7 +279,13 @@ const topic: Topic = {
     { id: 'bq-2016', title: '西城名校回龍觀分校迎新生', url: 'https://read01.com/NODEBQ.html', by: '北青网（壹读转载）' },
     { id: 'bjd-2023', title: '9月招新生！北京一〇一中教育集团两所中小学校落地昌平', url: 'https://news.bjd.com.cn/2023/04/05/10388303.shtml', by: '北京日报网（来源：北京考试报）' },
     { id: 'fgw-2023', title: '昌平区这3所学校首次迎新 回天地区已安排实施41个教育项目', url: 'https://fgw.beijing.gov.cn/gzdt/fgzs/mtbdx/bzwlxw/202309/t20230905_3250677.htm', by: '北京市发展和改革委员会（来源：北京新闻广播）' },
-    { id: 'fgw-2025', title: '回龙观天通苑告别"睡城"，7年添2.2万个学位、打通十多条断头路', url: 'https://fgw.beijing.gov.cn/gzdt/fgzs/mtbdx/bzwlxw/202507/t20250724_4157128.htm', by: '北京市发展和改革委员会（来源：北京日报）' },
+    { id: 'fgw-2025', title: '回龙观天通苑告别「睡城」，7年添2.2万个学位、打通十多条断头路', url: 'https://fgw.beijing.gov.cn/gzdt/fgzs/mtbdx/bzwlxw/202507/t20250724_4157128.htm', by: '北京市发展和改革委员会（来源：北京日报）' },
+    { id: 'jw-recess-2024', title: '北京市教育委员会关于印发《优化全市义务教育学校学生在校课间时间指导意见》的通知', url: 'https://jw.beijing.gov.cn/xxgk/2024zcwj/2024qtwj/202408/t20240829_3784438.html', by: '北京市教育委员会' },
+    { id: 'bj-recess-2024', title: '小学初中课间10分钟延至15分钟 引导学生走出教室 严禁拖堂和提前上课', url: 'https://www.beijing.gov.cn/ywdt/gzdt/202408/t20240831_3786044.html', by: '北京日报（首都之窗转载）' },
+    { id: 'bjd-cp-tyj-2025', title: '北京市昌平区校园体育节开幕', url: 'https://peking.bjd.com.cn/content/s67ffaac1e4b08edd28f7aacd.html', by: '北京日报客户端·北京号' },
+    { id: 'bjd-cp-bc-2025', title: '「班超」来了，昌平区来接力——昌平小将冲冲冲', url: 'https://peking.bjd.com.cn/content/s67ed0441e4b068c68f11d9fd.html', by: '北京日报客户端·北京号' },
+    { id: 'bjd-cp-curling-2023', title: '昌平运动员获北京市冬季系列比赛12项冠军！', url: 'https://peking.bjd.com.cn/channels/5b165687a010550e5ddc0e70/contentShare/62442be2e4b0cc3ab880550b/AP64ccb1eae4b03d11a64e2b70.html', by: '北京日报客户端·北京号' },
+    { id: 'bjd-ice-schools', title: '最全名单！北京200所学校获评「冰雪运动特色学校」', url: 'https://xinwen.bjd.com.cn/channels/5b165687a010550e5ddc0e6a/contentShare/5e719732e4b05e1038541c55/AP61e5103ae4b003f9f1afe2de.html', by: '北京日报客户端·北京号' },
   ],
 };
 
